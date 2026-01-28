@@ -1,0 +1,168 @@
+{
+  "audit": {
+    "date": "2026-01-28",
+    "time": "17:30:00",
+    "auditor": "Claude Opus 4.5 + GLM-4.7 Swarm",
+    "session_id": "glm3-mac-20260128",
+    "duration_minutes": 5,
+    "audit_type": "fleet"
+  },
+  "fleet": {
+    "machines": 3,
+    "total_services": 7,
+    "services_healthy": 7,
+    "services_degraded": 0,
+    "services_down": 0
+  },
+  "infrastructure": {
+    "mac": {
+      "ip": "192.168.68.55",
+      "role": "orchestrator",
+      "services": [
+        {"name": "opus-router", "port": 8788, "status": "healthy"}
+      ],
+      "os": "macOS 26.2",
+      "arch": "ARM64"
+    },
+    "alienware": {
+      "ip": "192.168.68.58",
+      "role": "brain_host",
+      "services": [
+        {"name": "brain-api", "port": 8080, "status": "healthy", "uptime_hours": 19},
+        {"name": "qwen3-vl-embedding", "port": 8002, "status": "healthy", "uptime_hours": 40},
+        {"name": "qwen3-vl-reranker", "port": 8003, "status": "healthy", "uptime_hours": 40},
+        {"name": "litellm", "port": 4001, "status": "healthy", "uptime_hours": 3}
+      ],
+      "memory_gb": 39
+    },
+    "pc": {
+      "ip": "192.168.68.50",
+      "role": "worker_fleet",
+      "ram_used_gb": 12,
+      "ram_total_gb": 23,
+      "ram_percent": 52,
+      "load_1m": 13.85,
+      "load_5m": 13.75,
+      "load_15m": 17.00
+    }
+  },
+  "brain": {
+    "total_records": 485848,
+    "total_tables": 55,
+    "api_version": "3.0.0",
+    "uptime_hours": 19,
+    "tables": {
+      "kg_entities": 21138,
+      "kg_relationships": 21008,
+      "kg_processed": 1010,
+      "reasoning_chains": 12350,
+      "runbooks": 6438,
+      "communities": 4231,
+      "wisdom": 4784,
+      "anticipated_needs": 15677,
+      "research_neural": 316771,
+      "session_knowledge": 28927,
+      "synthesized_insights": 12372,
+      "meta_knowledge": 9250,
+      "query_analytics": 8012,
+      "document_versions": 7347,
+      "session_archive": 6270
+    }
+  },
+  "workers": {
+    "entity": {
+      "status": "processing",
+      "progress_percent": 49.8,
+      "processed": 157000,
+      "total": 315000,
+      "duplicates": 1386
+    },
+    "relationship": {
+      "status": "idle",
+      "count": 20547,
+      "ratio_per_entity": 0.97
+    },
+    "reasoning": {
+      "status": "active",
+      "chains": 404,
+      "runbooks": 213
+    },
+    "wisdom": {
+      "status": "sleeping"
+    },
+    "community": {
+      "status": "sleeping",
+      "last_run": "2026-01-27"
+    },
+    "anticipator": {
+      "status": "sleeping"
+    }
+  },
+  "health_scores": {
+    "infrastructure": 9,
+    "brain_intelligence": 9,
+    "worker_fleet": 8,
+    "orchestration": 8,
+    "data_quality": 7,
+    "overall": 8.2
+  },
+  "issues": {
+    "critical": [],
+    "high": [],
+    "medium": [
+      {
+        "id": "dupes",
+        "description": "1386 duplicate entities",
+        "impact": "data_quality"
+      }
+    ],
+    "low": [
+      {
+        "id": "bge_reranker",
+        "description": "BGE Reranker module missing",
+        "impact": "none"
+      },
+      {
+        "id": "vllm_404",
+        "description": "vLLM chat endpoint returns 404",
+        "impact": "none"
+      }
+    ]
+  },
+  "opportunities": [
+    {
+      "priority": "P1",
+      "description": "Entity deduplication",
+      "effort_hours": 2,
+      "impact": "high"
+    },
+    {
+      "priority": "P1",
+      "description": "Wisdom extraction pipeline",
+      "effort_hours": 4,
+      "impact": "high"
+    },
+    {
+      "priority": "P2",
+      "description": "Community recluster",
+      "effort_hours": 1,
+      "impact": "medium"
+    },
+    {
+      "priority": "P2",
+      "description": "Reasoning chain processing",
+      "effort_hours": 6,
+      "impact": "high"
+    }
+  ],
+  "comparison_metrics": {
+    "total_records": 485848,
+    "entity_count": 21138,
+    "duplicate_rate_percent": 0.9,
+    "relationship_ratio": 0.97,
+    "brain_uptime_hours": 19,
+    "worker_load_1m": 13.85,
+    "health_overall": 8.2
+  },
+  "next_audit_recommended": "2026-02-04"
+}
